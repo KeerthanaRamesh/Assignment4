@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Keerthana</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<style>.a1{text-decoration: none;}
+.body{
+background-color: pink;
+    text-align: center;
+    padding-bottom:300px;
+    padding-top:60px;
+}
+.body2{
+	    background-color: antiquewhite;
+	    height: 969px;
+	    padding-top: 45px;
+}
+.img{
+	margin-left: 273px;
+}
+.topic{
+	    text-align: center;
+}
+.place{
+	    font-size: 56px;
+    font-family: cursive;
+}
+	</style>
+	<script>
+	var myApp = angular.module("app",[ "ui.router"]);
+    myApp.config(function ($stateProvider,$urlRouterProvider){
+        $urlRouterProvider.otherwise("/page1"); 
+        $stateProvider 
+    .state('page1', { 
+      url: '/page1', 
+      templateUrl: 'page1.html' ,
+
+    }) .state('page2', { 
+      url: '/page2/:key', 
+      templateUrl: 'page2.html',
+        controller: 'Ctrl2' 
+    }) 
+});
+
+
+myApp.controller( "Ctrl2", function($scope,$stateParams) {
+	var f=$stateParams.key;
+    console.log("Ctrl2 loaded.");
+    $scope.obj = {
+        "name": ["Cappadocia, Turkey","Salar de Uyuni: Daniel Campos, Bolivia","Mù Cang Chải: Vietnam","Benagil Sea Cave: Algarve, Portugal","Ashikaga Flower Park: Ashikaga, Japan"],
+        "place":[ "Ashikaga Flower Park: Ashikaga, JapanLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", "Cappadocia, an area in Turkey where entire cities have been carved into rock, is pretty incredible on its own. But whenever hot-air balloons pepper the sky, its beauty level simply skyrockets.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", " The reflective surface of the world's largest salt mine is like something from the imagination of Salvador Dali—although we're happy it actually exists in real life.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","Mù Cang Chải manages to be one of the most breathtaking spots in Vietnam, with terraced rice fields and mountainous landscapes.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","The southern coast of Portugal is lined with exquisite beaches and caves, including the famous Benagil Sea Cave (skylight included)Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."],
+        "img":["i1.jpg","i2.jpg","i3.jpg","i4.jpg","i5.jpg"]
+    }
+    $scope.name=$scope.obj.name[f];
+    $scope.place=$scope.obj.place[f];
+       $scope.img=$scope.obj.img[f];
+});
+</script>
+</head>
+<body ng-app="app">
+<div ui-view></div>
+</body>
+</html>
